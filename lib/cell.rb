@@ -18,17 +18,20 @@ class Cell
     end
   end
 
-  def coordinate
+  def coordinate # Read cell position
     @position
   end
 
-  def ship
+  def ship # Read ship on current cell
     @current_ship
   end
 
-  def fired_upon?
+  def fired_upon? # Read whether cell has been fired upon
     @fired_state
   end
 
+  def place_ship(ship) # Update internal value
+    @current_ship = ship
+  end
 
 end
