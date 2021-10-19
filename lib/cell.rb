@@ -26,5 +26,9 @@ class Cell
     @current_ship
   end
 
+  def fired_upon?
+    @fired_state
+  end
+
 
 end
