@@ -21,4 +21,8 @@ class Cell
     @position
   end
 
+  def ship
+    @current_ship
+  end
+
 end
