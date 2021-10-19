@@ -6,6 +6,7 @@ class Cell
     @position = position
     @cell_state = '.' # All cells start empty ('.')
     @current_ship = nil
+    @fired_state = false
 
   end
 
@@ -24,5 +25,6 @@ class Cell
   def ship
     @current_ship
   end
+
 
 end
