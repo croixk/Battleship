@@ -13,7 +13,5 @@ RSpec.describe Cell do
     expect(cell.empty?).to be true
   end
 
-  it ''
-
 
 end

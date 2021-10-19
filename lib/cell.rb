@@ -10,15 +10,11 @@ class Cell
   end
 
   def empty? # Check if cell is in empty state
-    if @cell_state == '.'
+    if @current_ship == nil
       true
     else
       false
     end
-  end
-
-  def place_ship(ship)
-
   end
 
 end
