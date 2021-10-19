@@ -1,4 +1,5 @@
 require './lib/cell'
+require './lib/ship'
 
 RSpec.describe Cell do
   it 'exists' do
@@ -29,6 +30,15 @@ RSpec.describe Cell do
     cell = Cell.new("A1")
 
     expect(cell.fired_upon?).to be false
+  end
+
+  it 'can place a given ship' do
+    cell = Cell.new("A1")
+    cruiser = Ship.new("Cruiser", 3)
+
+    cell.place_ship(cruiser)
+
+    expect(cell.ship).to eq(cruiser)
   end
 
 
