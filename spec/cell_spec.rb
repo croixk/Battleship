@@ -19,5 +19,11 @@ RSpec.describe Cell do
     expect(cell.coordinate).to eq("A1")
   end
 
+  it 'can read current ship type' do
+    cell = Cell.new("A1")
+
+    expect(cell.ship).to eq nil
+  end
+
 
 end
