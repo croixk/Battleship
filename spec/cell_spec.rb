@@ -25,5 +25,11 @@ RSpec.describe Cell do
     expect(cell.ship).to eq nil
   end
 
+  it 'can read fired_state' do
+    cell = Cell.new("A1")
+
+    expect(cell.fired_upon?).to be false
+  end
+
 
 end
