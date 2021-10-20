@@ -46,25 +46,32 @@ class Board
 
     ship_cells.each do |cell|
       coordinates = cell.split(//)
-      letter << cell_coordinates[0]
-      number << cell_coordinates[1]
+      letters << cell_coordinates[0]
+      numbers << cell_coordinates[1]
     end
+
+    letters_consecutive = letters.sort
+    numbers_consecutive = numbers.sort
 
     if ship_length != ship_cell.length
       return false
     # consecutive coordinates
-    elsif
+  elsif letters != letters_consecutive || numbers != numbers_consecutive
       return false
-    # diagonal check
-    elsif
+    # diagonal check - do something along the lines of last element minus first
+      # element of one can't equal that of the other (one has to be 0)
+    elsif #### ADD CODE HERE
       return false
     else
       return true
     end
   end
 
-  def place
-
+  def place(ship_name, ship_coordinates)
+    # modify each cell specified to contain ship ship_name
+    ship_coordinates.each do |coordinate|
+      @cells[coordinate].place_ship(ship_name)
+    end
   end
 
 

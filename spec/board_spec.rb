@@ -71,4 +71,8 @@ RSpec.describe Board do
     expect(@board.valid_placement?(cruiser, ["B1", "C1", "D1"])).to eq(false)
   end
 
+  ##### PICK UP HERE WITH TESTS FOR 'PLACING SHIPS' SECTION
+
+
+
 end
