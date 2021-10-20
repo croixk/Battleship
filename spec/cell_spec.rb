@@ -41,5 +41,44 @@ RSpec.describe Cell do
     expect(cell.ship).to eq(cruiser)
   end
 
+  it 'can fire upon a given cell' do
+    cell = Cell.new("A1")
+    cruiser = Ship.new("Cruiser", 2)
+
+    cell.place_ship(cruiser)
+    cell.fire_upon
+
+    expect(cell.ship.sunk?).to eq false
+  end
+
+  it 'can read a given fired state' do
+    cell = Cell.new("A1")
+    cruiser = Ship.new("Cruiser", 2)
+
+    cell.place_ship(cruiser)
+    cell.fire_upon
+
+    expect(cell.fired_upon?).to be true
+  end
+
+  it 'can read a given cell state' do
+    cell = Cell.new("A1")
+    cruiser = Ship.new("Cruiser", 2)
+
+    cell.place_ship(cruiser)
+    cell.fire_upon
+    expect(cell.current_cell_state).to eq('H')
+  end
+
+  it 'can show if a ship exists' do
+    cell = Cell.new("A1")
+    cruiser = Ship.new("Cruiser", 2)
+
+    cell.place_ship(cruiser)
+    cell.render(true)
+
+    expect(cell.current_cell_state).to eq('S')
+  end
+
 
 end
