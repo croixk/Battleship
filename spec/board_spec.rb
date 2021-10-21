@@ -21,12 +21,13 @@ RSpec.describe Board do
   end
 
   it 'is a valid coordinate - E1' do
-    expect(@board.valid_coordinate?("A1")).to eq(false)
+
+    expect(@board.valid_coordinate?("E1")).to eq(false)
   end
 
 
   it 'is a valid coordinate - A22' do
-    expect(@board.valid_coordinate?("A1")).to eq(false)
+    expect(@board.valid_coordinate?("A22")).to eq(false)
   end
 
 

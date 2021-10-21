@@ -46,22 +46,34 @@ class Board
   end
 
 
+  # pseudocode for valid_coordinate
+  def valid_coordinate?(cell_coordinates)
+    valid_coordinate = false
+    @cells.keys.each do |cell|
+      if cell == cell_coordinates
+        valid_coordinate = true
+      end
+    end
+    return valid_coordinate
+  end
+
+
   # doesn't seem to be failing E - why?
   # also needs to fail A22 - currently just pulls 2, not 22, doesn't fail
-  def valid_coordinate?(cell_coordinates)
-    cell_coordinates = cell_coordinates.split(//)
-    letter = cell_coordinates[0]
-    number = cell_coordinates[1].to_i
-
-    # require "pry"; binding.pry
-
-    # complete this
-    if ("A".."D").include?(letter) && (1 <= number) && (4 >= number)
-      return true
-    else
-      return false
-    end
-  end
+  # def valid_coordinate?(cell_coordinates)
+  #   cell_coordinates = cell_coordinates.split(//)
+  #   letter = cell_coordinates[0]
+  #   number = cell_coordinates[1].to_i
+  #
+  #   # require "pry"; binding.pry
+  #
+  #   # complete this
+  #   if ("A".."D").include?(letter) && (1 <= number) && (4 >= number)
+  #     return true
+  #   else
+  #     return false
+  #   end
+  # end
 
 
 
