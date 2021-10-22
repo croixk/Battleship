@@ -56,7 +56,7 @@ class Cell
 
   def render(optional_boolean)
     if optional_boolean != true # Will show cell_state
-      @current_cell_state
+      @cell_state
     else
       if @current_ship != nil # Will display 'S' if a ship exists on cell & optional boolean is true
         @cell_state = 'S'
