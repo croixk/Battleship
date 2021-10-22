@@ -47,11 +47,11 @@ class Board
 
 
 
-  def valid_coordinate?(cell_coordinates)
-    valid_coordinate = false
-    @cells.keys.each do |cell|
-      if cell == cell_coordinates
-        valid_coordinate = true
+  def valid_coordinate?(cell_coordinates) # Takes single coordiante as argument
+    valid_coordinate = false # Default return value
+    @cells.keys.each do |cell| # Loop through all keys in hash
+      if cell == cell_coordinates # Checks to see if inputted coordinate exists within our hash
+        valid_coordinate = true # If it does, return true
       end
     end
     return valid_coordinate
@@ -103,8 +103,16 @@ class Board
       not_diagonal = true
     end
 
-    # if 4 booleans above are all true - return true
-    if equal_length && valid_letters && valid_numbers && not_diagonal
+    is_valid_coordinate = true
+
+    ship_cells.each do |cell|
+      if valid_coordinate?(cell) == false
+        is_valid_coordinate = false
+      end
+    end
+
+    # if 5 booleans above are all true - return true
+    if equal_length && valid_letters && valid_numbers && not_diagonal && is_valid_coordinate
       return true
     else
       return false
@@ -114,13 +122,20 @@ class Board
 
   def place(ship_name, ship_coordinates)
 
-    if valid_placement(ship_name, ship_coordinates)
-      ship_coordinates.each do |coordinate|
-        @cells[coordinate].place_ship(ship_name)
-      end
-    else
-      puts "Placement is not valid"
+    # Places instance of ship in respective cells provided (ship_coordinates)
+    ship_coordinates.each do |coordinate|
+      self.cells[coordinate].place_ship(ship_name)
     end
+
+    # Legacy:
+    # if valid_placement?(ship_name, ship_coordinates)
+    #   ship_coordinates.each do |coordinate|
+    #     self.cells[coordinate].place_ship(ship_name)
+    #   end
+    # else
+    #   puts "Invalid placement."
+    # end
+
   end
 
 
