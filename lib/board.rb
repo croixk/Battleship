@@ -46,7 +46,7 @@ class Board
   end
 
 
-  # pseudocode for valid_coordinate
+
   def valid_coordinate?(cell_coordinates)
     valid_coordinate = false
     @cells.keys.each do |cell|
@@ -58,52 +58,45 @@ class Board
   end
 
 
-  # doesn't seem to be failing E - why?
-  # also needs to fail A22 - currently just pulls 2, not 22, doesn't fail
-  # def valid_coordinate?(cell_coordinates)
-  #   cell_coordinates = cell_coordinates.split(//)
-  #   letter = cell_coordinates[0]
-  #   number = cell_coordinates[1].to_i
-  #
-  #   # require "pry"; binding.pry
-  #
-  #   # complete this
-  #   if ("A".."D").include?(letter) && (1 <= number) && (4 >= number)
-  #     return true
-  #   else
-  #     return false
-  #   end
-  # end
+
+  def valid_placement?(ship_name, ship_cells)
+    # number of coordinates
+    letters = []
+    numbers = []
+
+    ship_cells.each do |cell|
+      coordinates = cell.split(//)
+      letters << coordinates[0]
+      numbers << coordinates[1]
+    end
+
+    equal_length = ship_name.length == ship_cells.length
+
+    consecutive_letters = false
+
+    #
+    if (letters == (letters.min..letters.max)) || letters.min == letters.max
+      consecutive_letters = true
+    end
+
+    if (numbers == (numbers.min..numbers.max)) || numbers.min == numbers.max
+      consecutive_numbers = true
+    end
+
+    if (numbers.min != numbers.max && letters.min != letters.max)
+      not_diagonal = false
+    else
+      not_diagonal = true
+    end
+
+    if equal_length && consecutive_letters && consecutive_numbers && not_diagonal
+      return true
+    else
+      return false
+    end
+  end
 
 
-
-  # def valid_placement?(ship_name, ship_cells)
-  #   # number of coordinates
-  #   letters = []
-  #   numbers = []
-  #
-  #   ship_cells.each do |cell|
-  #     coordinates = cell.split(//)
-  #     letters << cell_coordinates[0]
-  #     numbers << cell_coordinates[1]
-  #   end
-  #
-  #   letters_consecutive = letters.sort
-  #   numbers_consecutive = numbers.sort
-  #
-  #   if ship_length != ship_cell.length
-  #     return false
-  #   # consecutive coordinates
-  # elsif letters != letters_consecutive || numbers != numbers_consecutive
-  #     return false
-  #   # diagonal check - do something along the lines of last element minus first
-  #     # element of one can't equal that of the other (one has to be 0)
-  #   elsif #### ADD CODE HERE
-  #     return false
-  #   else
-  #     return true
-  #   end
-  # end
 
   def place(ship_name, ship_coordinates)
     # modify each cell specified to contain ship ship_name
@@ -113,13 +106,13 @@ class Board
   end
 
 
+
   def render
     print ("  1 2 3 4 ")
     print ("A " + @cells["A1"].cell_state + ' ' + @cells["A2"].cell_state + ' ' + @cells["A3"].cell_state + ' ' + @cells["A4"].cell_state)
     print ("B " + @cells["B1"].cell_state + ' ' + @cells["B2"].cell_state + ' ' + @cells["B3"].cell_state + ' ' + @cells["B4"].cell_state)
     print ("C " + @cells["C1"].cell_state + ' ' + @cells["C2"].cell_state + ' ' + @cells["C3"].cell_state + ' ' + @cells["C4"].cell_state)
-    print ("D " + @cells["C1"].cell_state + ' ' + @cells["D2"].cell_state + ' ' + @cells["D3"].cell_state + ' ' + @cells["D4"].cell_state)
-
+    print ("D " + @cells["D1"].cell_state + ' ' + @cells["D2"].cell_state + ' ' + @cells["D3"].cell_state + ' ' + @cells["D4"].cell_state)
   end
 
 end
