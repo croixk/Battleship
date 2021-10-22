@@ -60,7 +60,10 @@ class Board
 
 
   def valid_placement?(ship_name, ship_cells)
-    # number of coordinates
+    # example ship - cruiser, length = 3
+    # example ship cells - A1, A2, A3
+
+    # empty arrays to hold letters, numbers
     letters = []
     numbers = []
 
@@ -69,27 +72,39 @@ class Board
       letters << coordinates[0]
       numbers << coordinates[1]
     end
+    # letters = AAA
+    # numbers = 123
 
     equal_length = ship_name.length == ship_cells.length
+    # boolean - ship_name = 3, ship_cells.length = 3, so true
 
-    consecutive_letters = false
+    # establish booleans for following blocks - set to false by default
+    valid_letters = false
+    consecutive_numbers  = false
 
-    #
+    #   AAA    ==   range, A to A, so AA     or    A min, A max, so A=A
+    #               (this is false)                  (this is true, valid)
     if (letters == (letters.min..letters.max)) || letters.min == letters.max
-      consecutive_letters = true
+      valid_letters = true
     end
 
+    #   123     ==  range, 1 to 3, so 123      or    1 min, 3 max, but 1!= 3
+    #               this is true                      this is false
+    #                                returns true overall with 'or'
     if (numbers == (numbers.min..numbers.max)) || numbers.min == numbers.max
-      consecutive_numbers = true
+      valid_numbers = true
     end
 
+    # need to ensure that A1, B2, C3 fails
+    # only number or letter conditional can be met
     if (numbers.min != numbers.max && letters.min != letters.max)
       not_diagonal = false
     else
       not_diagonal = true
     end
 
-    if equal_length && consecutive_letters && consecutive_numbers && not_diagonal
+    # if 4 booleans above are all true - return true
+    if equal_length && valid_letters && valid_numbers && not_diagonal
       return true
     else
       return false
@@ -97,14 +112,16 @@ class Board
   end
 
 
-
   def place(ship_name, ship_coordinates)
-    # modify each cell specified to contain ship ship_name
-    ship_coordinates.each do |coordinate|
-      @cells[coordinate].place_ship(ship_name)
+
+    if valid_placement(ship_name, ship_coordinates)
+      ship_coordinates.each do |coordinate|
+        @cells[coordinate].place_ship(ship_name)
+      end
+    else
+      puts "Placement is not valid"
     end
   end
-
 
 
   def render
