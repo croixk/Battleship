@@ -119,6 +119,8 @@ class Board
       end
     end
 
+    # require "pry"; binding.pry
+
     # if 6 booleans above are all true - return true
     if equal_length && valid_letters && valid_numbers && not_diagonal && is_valid_coordinate && has_no_ship
       return true
