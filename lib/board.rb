@@ -111,8 +111,16 @@ class Board
       end
     end
 
-    # if 5 booleans above are all true - return true
-    if equal_length && valid_letters && valid_numbers && not_diagonal && is_valid_coordinate
+    has_no_ship = true
+    ship_cells.each do |cell| # Checks provided cell arrays to see if @current_ship attribute is nil
+      # Compare respective element of inputted array to cell hash value equivalen
+      if @cells[cell].ship != nil
+        has_no_ship = false # if not nil, valid_placement? = false
+      end
+    end
+
+    # if 6 booleans above are all true - return true
+    if equal_length && valid_letters && valid_numbers && not_diagonal && is_valid_coordinate && has_no_ship
       return true
     else
       return false
@@ -139,12 +147,12 @@ class Board
   end
 
 
-  def render
-    print ("  1 2 3 4 ")
-    print ("A " + @cells["A1"].cell_state + ' ' + @cells["A2"].cell_state + ' ' + @cells["A3"].cell_state + ' ' + @cells["A4"].cell_state)
-    print ("B " + @cells["B1"].cell_state + ' ' + @cells["B2"].cell_state + ' ' + @cells["B3"].cell_state + ' ' + @cells["B4"].cell_state)
-    print ("C " + @cells["C1"].cell_state + ' ' + @cells["C2"].cell_state + ' ' + @cells["C3"].cell_state + ' ' + @cells["C4"].cell_state)
-    print ("D " + @cells["D1"].cell_state + ' ' + @cells["D2"].cell_state + ' ' + @cells["D3"].cell_state + ' ' + @cells["D4"].cell_state)
+  def render(optional_bool = false)
+    puts ("  1 2 3 4 ")
+    puts ("A " + @cells["A1"].render(optional_bool) + ' ' + @cells["A2"].render(optional_bool) + ' ' + @cells["A3"].render(optional_bool) + ' ' + @cells["A4"].render(optional_bool))
+    puts ("B " + @cells["B1"].render(optional_bool) + ' ' + @cells["B2"].render(optional_bool) + ' ' + @cells["B3"].render(optional_bool) + ' ' + @cells["B4"].render(optional_bool))
+    puts ("C " + @cells["C1"].render(optional_bool) + ' ' + @cells["C2"].render(optional_bool) + ' ' + @cells["C3"].render(optional_bool) + ' ' + @cells["C4"].render(optional_bool))
+    puts ("D " + @cells["D1"].render(optional_bool) + ' ' + @cells["D2"].render(optional_bool) + ' ' + @cells["D3"].render(optional_bool) + ' ' + @cells["D4"].render(optional_bool))
   end
 
 end
