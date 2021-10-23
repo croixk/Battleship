@@ -39,9 +39,6 @@ class Cell
         @cell_state = 'H'
         @current_ship.hit
         @fired_state = true
-      elsif @current_ship.sunk? == true
-        @cell_state = 'X'
-        @fired_state = true
       end
     end
   end
@@ -55,12 +52,35 @@ class Cell
   end
 
   def render(optional_boolean)
-    if optional_boolean != true # Will show cell_state
-      @current_cell_state
-    else
-      if @current_ship != nil # Will display 'S' if a ship exists on cell & optional boolean is true
-        @cell_state = 'S'
+
+    if optional_boolean == true
+      if @current_ship != nil and @current_ship.sunk? == false
+        @cell_state = 'S' # Update cell state to 'S' if ship that hasn't sunk exists
+      elsif @current_ship != nil and @current_ship.sunk?
+        @cell_state = 'X' # Update cell state to 'X' if sunken ship does exist
       end
+      @cell_state # Return rendered cell state
+    else
+      if @current_ship != nil and @current_ship.sunk?
+        @cell_state = 'X' #
+      end
+      @cell_state 
     end
+
+    # Legacy:
+    # if optional_boolean != true # Will show cell_state
+    #   if @current_ship != nil and @current_ship.sunk?
+    #     @cell_state = 'X'
+    #   end
+    #   @cell_state
+    # else
+    #   if @current_ship != nil # Will display 'S' if a ship exists on cell & optional boolean is true
+    #     if @current_ship.sunk?
+    #       @cell_state = 'X'
+    #     else
+    #     @cell_state = 'S'
+    #   end
+    #   end
+    # end
   end
 end
