@@ -55,19 +55,19 @@ class Cell
 
     if optional_boolean == true
       if @current_ship != nil and @current_ship.sunk? == false
-        @cell_state = 'S'
+        @cell_state = 'S' # Update cell state to 'S' if ship that hasn't sunk exists
       elsif @current_ship != nil and @current_ship.sunk?
-        @cell_state = 'X'
+        @cell_state = 'X' # Update cell state to 'X' if sunken ship does exist
       end
-      @cell_state
+      @cell_state # Return rendered cell state
     else
       if @current_ship != nil and @current_ship.sunk?
-        @cell_state = 'X'
+        @cell_state = 'X' #
       end
-      @cell_state
+      @cell_state 
     end
 
-    # Legacy: 
+    # Legacy:
     # if optional_boolean != true # Will show cell_state
     #   if @current_ship != nil and @current_ship.sunk?
     #     @cell_state = 'X'
