@@ -86,7 +86,7 @@ class Computer
       "D3",
       "D4"
     ]
-    
+
   end
   # require 'pry'; binding.pry
   def random_cruiser_position
@@ -98,7 +98,7 @@ class Computer
   end
 
   def random_fire
-
+    @possible_cells.sample
   end
 
 
