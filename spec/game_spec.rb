@@ -16,6 +16,27 @@ RSpec.describe 'Game' do
     expect(current_game.computer_board).to be_instance_of(Board)
   end
 
+  it 'can read game-specific ship instance (player_cruiser)' do
+    current_game = Game.new()
+    expect(current_game.player_cruiser).to be_instance_of(Ship)
+  end
+
+  it 'can read game-specific ship instance (player_sub)' do
+    current_game = Game.new()
+    expect(current_game.player_sub).to be_instance_of(Ship)
+  end
+
+  it 'can read game-specific ship instance (computer_cruiser)' do
+    current_game = Game.new()
+    expect(current_game.computer_cruiser).to be_instance_of(Ship)
+  end
+
+  it 'can read game-specific ship instance (computer_sub)' do
+    current_game = Game.new()
+    expect(current_game.computer_cruiser).to be_instance_of(Ship)
+  end
+
+
 
 
 
