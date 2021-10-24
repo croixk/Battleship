@@ -11,6 +11,11 @@ RSpec.describe 'Game' do
     expect(current_game.player_board).to be_instance_of(Board)
   end
 
+  it 'can read computer_board object' do
+    current_game = Game.new()
+    expect(current_game.computer_board).to be_instance_of(Board)
+  end
+
 
 
 
