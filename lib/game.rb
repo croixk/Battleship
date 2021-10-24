@@ -67,4 +67,28 @@ class Game
   end
 
 
+  def place_computer_ships
+
+    valid_cruiser = false
+    while valid_cruiser == false
+      cruiser_squares = @computer.random_cruiser_position
+      if computer_board.valid_placement?(@computer_cruiser, cruiser_squares)
+        computer_board.place(@computer_cruiser, cruiser_squares)
+        valid_cruiser = true
+      end
+    end
+
+    valid_submarine = false
+    while valid_submarine == false
+      submarine_squares = @computer.random_sub_position
+      if computer_board.valid_placement?(@computer_sub, submarine_squares)
+        computer_board.place(@computer_sub, submarine_squares)
+        valid_submarine = true
+      end
+    end
+  end
+
+
+
+
 end
