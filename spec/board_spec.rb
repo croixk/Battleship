@@ -31,7 +31,6 @@ RSpec.describe Board do
     expect(@board.valid_coordinate?("A22")).to eq(false)
   end
 
-
   it 'is a valid placement - length' do
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
@@ -93,14 +92,21 @@ RSpec.describe Board do
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
-    expect(board.valid_placement?(submarine, ["A1", "A2"])).to eq(false)
+    expect(board.valid_placement?(submarine, ["A1", "A2"])).to eq(true)
   end
 
   it 'is a valid placement - final check' do
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
-    expect(board.valid_placement?(cruiser, ["B1", "C1", "D1"])).to eq(false)
+    expect(board.valid_placement?(cruiser, ["B1", "C1", "D1"])).to eq(true)
+  end
+
+  it 'is a valid placement - final check - 14' do
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
+    expect(board.valid_placement?(submarine, ["A1", "B1"])).to eq(true)
   end
 
 

@@ -61,7 +61,7 @@ class Board
 
   def valid_placement?(ship_name, ship_cells)
     # example ship - cruiser, length = 3
-    # example ship cells - A1, A2, A3
+    # example ship cells - ["A1", "A2", A3]
 
     # empty arrays to hold letters, numbers
     letters = []
@@ -70,7 +70,7 @@ class Board
     ship_cells.each do |cell|
       coordinates = cell.split(//)
       letters << coordinates[0]
-      numbers << coordinates[1]
+      numbers << (coordinates[1].to_i)
     end
     # letters = AAA
     # numbers = 123
@@ -80,24 +80,24 @@ class Board
 
     # establish booleans for following blocks - set to false by default
     valid_letters = false
-    consecutive_numbers  = false
 
     #   AAA    ==   range, A to A, so AA     or    A min, A max, so A=A
     #               (this is false)                  (this is true, valid)
-    if (letters == (letters.min..letters.max)) || letters.min == letters.max
+    if letters == (letters.min..letters.max).to_a || letters.min == letters.max
       valid_letters = true
     end
 
     #   123     ==  range, 1 to 3, so 123      or    1 min, 3 max, but 1!= 3
     #               this is true                      this is false
     #                                returns true overall with 'or'
-    if (numbers == (numbers.min..numbers.max)) || numbers.min == numbers.max
+    valid_numbers = false
+    if numbers == (numbers.min..numbers.max).to_a || numbers.min == numbers.max
       valid_numbers = true
     end
 
     # need to ensure that A1, B2, C3 fails
     # only number or letter conditional can be met
-    if (numbers.min != numbers.max && letters.min != letters.max)
+    if (numbers.min.to_i != numbers.max.to_i && letters.min != letters.max)
       not_diagonal = false
     else
       not_diagonal = true
