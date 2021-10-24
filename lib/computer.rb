@@ -1,6 +1,6 @@
 
 
-
+# This is in fact, very scalable
 class Computer
 
   attr_reader :possible_cruiser_positions, :possible_submarine_positions
@@ -67,6 +67,26 @@ class Computer
       ["B4", "C4"], # Vertical, C4-V2
       ["C4", "D4"] # Vertical, C4-V3
     ]
+
+    @possible_cells = [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "D1",
+      "D2",
+      "D3",
+      "D4"
+    ]
+
   end
   # require 'pry'; binding.pry
   def random_cruiser_position
@@ -75,6 +95,10 @@ class Computer
 
   def random_sub_position
     @possible_submarine_positions.sample
+  end
+
+  def random_fire
+    @possible_cells.sample
   end
 
 
