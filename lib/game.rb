@@ -1,5 +1,6 @@
 # Our 'board' require contains other required files
 require './lib/board'
+require './lib/computer'
 
 class Game
 
@@ -33,7 +34,7 @@ class Game
     while valid_cruiser == false
       # require "pry"; binding.pry
       if player_board.valid_placement?(@player_cruiser, cruiser_squares)
-        player_board.place(cruiser, cruiser_squares)
+        player_board.place(@player_cruiser, cruiser_squares)
         valid_cruiser = true
       elsif user_input == "q" # will this work
         game_running = false
@@ -51,10 +52,10 @@ class Game
 
     valid_submarine = false
     while valid_submarine == false
-      submarine = Ship.new("submarine", 2)
+      # submarine = Ship.new("submarine", 2)
       # require "pry"; binding.pry
-      if computer_board.valid_placement?(submarine, submarine_squares)
-        computer_board.place(submarine, submarine_squares)
+      if player_board.valid_placement?(@player_sub, submarine_squares)
+        player_board.place(@player_sub, submarine_squares)
         valid_submarine = true
       elsif user_input == "q" # will this work
         game_running = false
