@@ -25,6 +25,12 @@ RSpec.describe Computer do
     expect(board.valid_placement?(submarine, computer.random_sub_position)).to eq true
   end
 
-
+  it 'can select a random cell' do
+    board = Board.new()
+    submarine = Ship.new("Submarine", 2)
+    computer = Computer.new()
+    require 'pry'; binding.pry
+    expect(board.valid_coordinate?(computer.random_fire)).to eq true
+  end
 
 end
