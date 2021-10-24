@@ -4,7 +4,7 @@ require './lib/computer'
 
 class Game
 
-  attr_reader :player_board, :computer_board, :player_cruiser, :player_sub, :computer_cruiser, :computer_sub
+  attr_reader :computer, :player_board, :computer_board, :player_cruiser, :player_sub, :computer_cruiser, :computer_sub
   def initialize
 
     # Initialize computer instance
@@ -65,6 +65,30 @@ class Game
       end
     end
   end
+
+
+  def place_computer_ships
+
+    valid_cruiser = false
+    while valid_cruiser == false
+      cruiser_squares = @computer.random_cruiser_position
+      if computer_board.valid_placement?(@computer_cruiser, cruiser_squares)
+        computer_board.place(@computer_cruiser, cruiser_squares)
+        valid_cruiser = true
+      end
+    end
+
+    valid_submarine = false
+    while valid_submarine == false
+      submarine_squares = @computer.random_sub_position
+      if computer_board.valid_placement?(@computer_sub, submarine_squares)
+        computer_board.place(@computer_sub, submarine_squares)
+        valid_submarine = true
+      end
+    end
+  end
+
+
 
 
 end

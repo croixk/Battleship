@@ -21,55 +21,9 @@ def battleship_runner
       puts "You now need to lay out your two ships."
       puts "The Cruiser is three units long and the Submarine is two units long."
 
+      current_game.place_computer_ships
       current_game.place_player_ships
-      # computer_board.render
-      #
-      # puts "Enter the squares for the Cruiser (3 spaces):"
-      #
-      # cruiser_squares = gets.chomp.split
 
-      # require "pry"; binding.pry
-
-      # valid_cruiser = false
-      # while valid_cruiser == false
-      #   cruiser = Ship.new("cruiser", 3)
-      #   # require "pry"; binding.pry
-      #   if computer_board.valid_placement?(cruiser, cruiser_squares)
-      #     computer_board.place(cruiser, cruiser_squares)
-      #     valid_cruiser = true
-      #   elsif user_input == "q" # will this work
-      #     game_running = false
-      #   else
-      #     puts "Those are invalid coordinates. Please try again:"
-      #     cruiser_squares = gets.chomp.split
-      #   end
-      # end
-
-      # player_board.render(true)
-
-      # place submarine
-      # puts "Enter the squares for the Submarine (2 spaces):"
-      #
-      # submarine_squares = gets.chomp.split
-      #
-      # # require "pry"; binding.pry
-      #
-      # valid_submarine = false
-      # while valid_submarine == false
-      #   submarine = Ship.new("submarine", 2)
-      #   # require "pry"; binding.pry
-      #   if computer_board.valid_placement?(submarine, submarine_squares)
-      #     computer_board.place(submarine, submarine_squares)
-      #     valid_submarine = true
-      #   elsif user_input == "q" # will this work
-      #     game_running = false
-      #   else
-      #     puts "Those are invalid coordinates. Please try again:"
-      #     submarine_squares = gets.chomp.split
-      #   end
-      # end
-
-      # start game
       game_over = false
       while game_over != true
         puts"=============COMPUTER BOARD=========="
@@ -82,13 +36,20 @@ def battleship_runner
         shot = gets.chomp
 
         # this should be computer board - can change once we have that
+
+
         if current_game.computer_board.valid_coordinate?(shot)
           #fire upon
           current_game.computer_board.cells[shot].fire_upon
         end
 
-        # computer take shot
 
+        if current_game.player_board.valid_coordinate?(current_game.computer.random_fire)
+          #fire upon
+          current_game.player_board.cells[current_game.computer.random_fire].fire_upon
+        end
+
+    
         # if block - if ships have all sunk, set game_over to true
         # game is over if player ship 1 and 2 are sunk, or computer 1 and 2
         if current_game.computer_cruiser.sunk? && current_game.computer_sub.sunk?
