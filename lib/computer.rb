@@ -3,8 +3,10 @@
 
 class Computer
 
+  attr_reader :possible_cruiser_positions, :possible_submarine_positions
+
   def initialize
-    possible_cruiser_positions = [
+    @possible_cruiser_positions = [
       # Rows to Vertical variations (two possible)
       ["A1", "A2", "A3"], # Horizontal, R1-V1
       ["A2", "A3", "A4"], # Horizontal, R1-V2
@@ -31,7 +33,7 @@ class Computer
       ["B4", "C4", "D4"] # Vertical, C4-V2
     ]
 
-    possible_submarine_positions = [
+    @possible_submarine_positions = [
       # Rows to Vertical variations (three possible)
       ["A1", "A2"], # Horizontal, R1-V1
       ["A2", "A3"], # Horizontal, R1-V2
@@ -63,11 +65,17 @@ class Computer
 
       ["A4", "B4"], # Vertical, C4-V1
       ["B4", "C4"], # Vertical, C4-V2
-      ["C4", "D4"], # Vertical, C4-V3
-
+      ["C4", "D4"] # Vertical, C4-V3
     ]
   end
+  # require 'pry'; binding.pry
+  def random_cruiser_position
+    @possible_cruiser_positions.sample
+  end
 
+  def random_sub_position
+    @possible_submarine_positions.sample
+  end
 
 
 end
