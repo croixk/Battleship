@@ -27,7 +27,7 @@ def battleship_runner
       game_over = false
       while game_over != true
         puts"=============COMPUTER BOARD=========="
-        current_game.computer_board.render(true)
+        current_game.computer_board.render
 
         puts"==============PLAYER BOARD=============="
         current_game.player_board.render(true)
@@ -36,13 +36,20 @@ def battleship_runner
         shot = gets.chomp
 
         # this should be computer board - can change once we have that
+
+
         if current_game.computer_board.valid_coordinate?(shot)
           #fire upon
           current_game.computer_board.cells[shot].fire_upon
         end
 
-        # computer take shot
 
+        if current_game.player_board.valid_coordinate?(current_game.computer.random_fire)
+          #fire upon
+          current_game.player_board.cells[current_game.computer.random_fire].fire_upon
+        end
+
+    
         # if block - if ships have all sunk, set game_over to true
         # game is over if player ship 1 and 2 are sunk, or computer 1 and 2
         if current_game.computer_cruiser.sunk? && current_game.computer_sub.sunk?

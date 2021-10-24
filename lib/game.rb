@@ -4,7 +4,7 @@ require './lib/computer'
 
 class Game
 
-  attr_reader :player_board, :computer_board, :player_cruiser, :player_sub, :computer_cruiser, :computer_sub
+  attr_reader :computer, :player_board, :computer_board, :player_cruiser, :player_sub, :computer_cruiser, :computer_sub
   def initialize
 
     # Initialize computer instance
