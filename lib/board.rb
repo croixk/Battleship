@@ -160,4 +160,34 @@ class Board
     puts ("D " + @cells["D1"].render(optional_bool) + ' ' + @cells["D2"].render(optional_bool) + ' ' + @cells["D3"].render(optional_bool) + ' ' + @cells["D4"].render(optional_bool))
   end
 
+  def has_ships?
+    has_cruiser_instance = false
+    @cells.values.each do |cell|
+        if cell.ship == nil
+          has_cruiser_instance
+        else
+          if cell.ship.name == "Cruiser"
+          has_cruiser_instance = true
+          end
+        end
+    end
+
+    has_submarine_instance = false
+    @cells.values.each do |cell|
+        if cell.ship == nil
+          has_submarine_instance
+        else
+          if cell.ship.name == "Submarine"
+          has_submarine_instance = true
+          end
+        end
+    end
+
+    if has_cruiser_instance and has_submarine_instance
+      return true
+    else
+      return false
+    end
+  end
+
 end

@@ -4,8 +4,6 @@ require './lib/cell'
 require './lib/game'
 
 # Refactor valid_placement?
-# Write is_game_over? test
-# Write valid_computer_placement test
 
 def battleship_runner
 
@@ -17,9 +15,6 @@ def battleship_runner
 
     if user_input == "p"
       current_game = Game.new()
-
-      # computer makes board - figure out how to do this
-      # come back to this - where do we do random computer board?
 
       puts "I have laid out my ships on the grid."
       puts "You now need to lay out your two ships."
