@@ -38,7 +38,8 @@ RSpec.describe 'Game' do
 
   it 'can return appropriate is_game_over? value' do
     current_game = Game.new()
-    
+
+    expect(current_game.is_game_over?).to be false
   end
 
 # Test return value of is_game_over?
