@@ -54,7 +54,7 @@ class Cell
   def render(optional_boolean)
 
     if optional_boolean == true
-      if @current_ship != nil and @current_ship.sunk? == false
+      if @current_ship != nil and @current_ship.sunk? == false and @cell_state != 'H'
         @cell_state = 'S' # Update cell state to 'S' if ship that hasn't sunk exists
       elsif @current_ship != nil and @current_ship.sunk?
         @cell_state = 'X' # Update cell state to 'X' if sunken ship does exist

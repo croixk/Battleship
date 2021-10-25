@@ -3,24 +3,17 @@ require './lib/ship'
 require './lib/cell'
 require './lib/game'
 
-# computer hits same cells more than once /user can hit same cell more than once (SOLVED)
-# can't quit from final page - can only quit before playing game
-# can't render a hit when showing own ships (with boolean)
-# after taking a shot = need to display message (SOLVED)
-# doesn't ask again if you enter coordinate wrong (SOLVED)
-# report who won/lost (SOLVED)
-# add comments to pull requests (eventually)
-# error if you enter incorrect coordinate to place (SOLVED)
-
-
+# Refactor valid_placement?
+# Write is_game_over? test
+# Write valid_computer_placement test
 
 def battleship_runner
-  puts "Welcome to BATTLESHIP"
-  puts "Enter p to play. Enter q to quit."
-  user_input = gets.chomp
 
   game_running = true
   while game_running
+    puts "Welcome to BATTLESHIP"
+    puts "Enter p to play. Enter q to quit."
+    user_input = gets.chomp
 
     if user_input == "p"
       current_game = Game.new()
@@ -39,20 +32,10 @@ def battleship_runner
       current_game.computer_board.render
 
       puts"==============PLAYER BOARD=============="
-      current_game.player_board.render
+      current_game.player_board.render(true)
 
       game_over = false
       while game_over != true
-        # puts"=============COMPUTER BOARD=========="
-        # current_game.computer_board.render
-        #
-        # puts"==============PLAYER BOARD=============="
-        # current_game.player_board.render
-        # require "pry"; binding.pry
-
-        # TEMPORARILY COMMENTED
-        # puts"Enter the coordinate for your shot:"
-        # shot = gets.chomp
 
         current_game.take_turn
 
@@ -60,22 +43,8 @@ def battleship_runner
         # game is over if player ship 1 and 2 are sunk, or computer 1 and 2
 
         if current_game.is_game_over?
-          battleship_runner
+          game_over = true
         end
-        # if current_game.computer_cruiser.sunk? && current_game.computer_sub.sunk?
-        #   game_over = true
-        #   puts"=============COMPUTER BOARD=========="
-        #   current_game.computer_board.render
-        #
-        #   puts"==============PLAYER BOARD=============="
-        #   current_game.player_board.render
-        #
-        #   puts"game over"
-        #
-        #   battleship_runner
-        # end
-
-        # 2nd block to end game , 2nd outcome
 
       end
 

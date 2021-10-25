@@ -36,7 +36,13 @@ RSpec.describe 'Game' do
     expect(current_game.computer_cruiser).to be_instance_of(Ship)
   end
 
+  it 'can return appropriate is_game_over? value' do
+    current_game = Game.new()
+    
+  end
 
+# Test return value of is_game_over?
+# Test to see if computer board has 2 ship instances
 
 
 
