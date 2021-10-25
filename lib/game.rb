@@ -52,7 +52,6 @@ class Game
       if player_board.valid_placement?(@player_sub, submarine_squares)
         player_board.place(@player_sub, submarine_squares)
         valid_submarine = true
-
       else
         puts "Those are invalid coordinates. Please try again:"
         submarine_squares = gets.chomp.split
@@ -88,9 +87,14 @@ class Game
     shot = gets.chomp
 
     until valid_player_shot == true
-      if @computer_board.valid_coordinate?(shot)
+      if @computer_board.valid_coordinate?(shot) and @computer_board.cells[shot].fired_upon? == false
         valid_player_shot = true
         @computer_board.cells[shot].fire_upon
+
+      elsif @computer_board.valid_coordinate?(shot) and @computer_board.cells[shot].fired_upon?
+        puts "You've already shot at this coordinate, please select a new one:"
+        shot = gets.chomp
+
       else
         puts "Please enter a valid coordinate."
         shot = gets.chomp
@@ -100,7 +104,7 @@ class Game
     valid_computer_shot = false # Same as above, but automated by computer random method
     until valid_computer_shot == true
       random_coordinate = @computer.random_fire
-      if @player_board.valid_coordinate?(random_coordinate)
+      if @player_board.valid_coordinate?(random_coordinate) and @player_board.cells[random_coordinate].fired_upon? == false
         valid_computer_shot = true
         @player_board.cells[random_coordinate].fire_upon
       else
