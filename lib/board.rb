@@ -50,7 +50,8 @@ class Board
   def valid_coordinate?(cell_coordinates) # Takes single coordiante as argument
     valid_coordinate = false # Default return value
     @cells.keys.each do |cell| # Loop through all keys in hash
-      if cell == cell_coordinates # Checks to see if inputted coordinate exists within our hash
+      # require "pry"; binding.pry
+      if cell == cell_coordinates && (@cells[cell_coordinates].fired_upon? == false) # Checks to see if inputted coordinate exists within our hash
         valid_coordinate = true # If it does, return true
       end
     end
@@ -74,6 +75,15 @@ class Board
     end
     # letters = AAA
     # numbers = 123
+
+
+    is_valid_coordinate = true
+
+    ship_cells.each do |cell|
+      if valid_coordinate?(cell) == false
+        return false
+      end
+    end
 
     equal_length = ship_name.length == ship_cells.length
     # boolean - ship_name = 3, ship_cells.length = 3, so true
@@ -103,13 +113,6 @@ class Board
       not_diagonal = true
     end
 
-    is_valid_coordinate = true
-
-    ship_cells.each do |cell|
-      if valid_coordinate?(cell) == false
-        is_valid_coordinate = false
-      end
-    end
 
     has_no_ship = true
     ship_cells.each do |cell| # Checks provided cell arrays to see if @current_ship attribute is nil
