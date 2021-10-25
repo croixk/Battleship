@@ -6,13 +6,10 @@ require './lib/game'
 # computer hits same cells more than once /user can hit same cell more than once (SOLVED)
 # can't quit from final page - can only quit before playing game
 # can't render a hit when showing own ships (with boolean)
-# after taking a shot = need to display message
-  #Your shot on A4 was a miss.
-  # My shot on C1 was a miss.
-# display missed shot
+# after taking a shot = need to display message (SOLVED)
 # doesn't ask again if you enter coordinate wrong (SOLVED)
-# report who won/lost
-# add comments to pull requests
+# report who won/lost (SOLVED)
+# add comments to pull requests (eventually)
 # error if you enter incorrect coordinate to place (SOLVED)
 
 
@@ -55,18 +52,22 @@ def battleship_runner
 
         # if block - if ships have all sunk, set game_over to true
         # game is over if player ship 1 and 2 are sunk, or computer 1 and 2
-        if current_game.computer_cruiser.sunk? && current_game.computer_sub.sunk?
-          game_over = true
-          puts"=============COMPUTER BOARD=========="
-          current_game.computer_board.render
 
-          puts"==============PLAYER BOARD=============="
-          current_game.player_board.render
-
-          puts"game over"
-
+        if current_game.is_game_over?
           battleship_runner
         end
+        # if current_game.computer_cruiser.sunk? && current_game.computer_sub.sunk?
+        #   game_over = true
+        #   puts"=============COMPUTER BOARD=========="
+        #   current_game.computer_board.render
+        #
+        #   puts"==============PLAYER BOARD=============="
+        #   current_game.player_board.render
+        #
+        #   puts"game over"
+        #
+        #   battleship_runner
+        # end
 
         # 2nd block to end game , 2nd outcome
 

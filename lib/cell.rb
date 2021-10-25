@@ -64,7 +64,7 @@ class Cell
       if @current_ship != nil and @current_ship.sunk?
         @cell_state = 'X' #
       end
-      @cell_state 
+      @cell_state
     end
 
     # Legacy:

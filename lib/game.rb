@@ -112,6 +112,58 @@ class Game
         valid_computer_shot = false
       end
     end
+
+
+    # player statement
+    if @computer_board.cells[shot].current_cell_state == "H"
+      puts "\n\n Your shot on #{shot} was a hit."
+    elsif @computer_board.cells[shot].current_cell_state == "M"
+      puts "\n\n Your shot on #{shot} was a miss."
+    else @computer_board.cells[shot].current_cell_state == "X"
+      puts "\n\n Your shot on #{shot} sunk the ship."
+    end
+
+    # computer statement
+    if @player_board.cells[random_coordinate].current_cell_state == "H"
+      puts "My shot on #{random_coordinate} was a hit. \n\n"
+    elsif @player_board.cells[random_coordinate].current_cell_state == "M"
+      puts "My shot on #{random_coordinate} was a miss. \n\n"
+    else @player_board.cells[random_coordinate].current_cell_state == "X"
+      puts "My shot on #{random_coordinate} sunk the ship. \n\n"
+    end
   end
+
+  def is_game_over?
+    if @computer_cruiser.sunk? && @computer_sub.sunk?
+      game_over = true
+      puts"=============COMPUTER BOARD=========="
+      @computer_board.render
+
+      puts"==============PLAYER BOARD=============="
+      @player_board.render
+
+      puts"\nYou won!\n\n"
+
+      return true
+
+    elsif @player_cruiser.sunk? && @player_sub.sunk?
+      game_over = true
+      puts"=============COMPUTER BOARD=========="
+      @computer_board.render
+
+      puts"==============PLAYER BOARD=============="
+      @player_board.render
+
+      puts"\nI won!\n\n"
+
+      return true
+
+    else
+      return false
+
+    end
+
+  end
+
 
 end
