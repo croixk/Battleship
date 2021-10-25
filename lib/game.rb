@@ -131,8 +131,39 @@ class Game
     else @player_board.cells[random_coordinate].current_cell_state == "X"
       puts "My shot on #{random_coordinate} sunk the ship. \n\n"
     end
+  end
 
+  def is_game_over?
+    if @computer_cruiser.sunk? && @computer_sub.sunk?
+      game_over = true
+      puts"=============COMPUTER BOARD=========="
+      @computer_board.render
+
+      puts"==============PLAYER BOARD=============="
+      @player_board.render
+
+      puts"\nYou won!\n\n"
+
+      return true
+
+    elsif @player_cruiser.sunk? && @player_sub.sunk?
+      game_over = true
+      puts"=============COMPUTER BOARD=========="
+      @computer_board.render
+
+      puts"==============PLAYER BOARD=============="
+      @player_board.render
+
+      puts"\nI won!\n\n"
+
+      return true
+
+    else
+      return false
+
+    end
 
   end
+
 
 end
