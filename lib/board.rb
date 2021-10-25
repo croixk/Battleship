@@ -50,7 +50,8 @@ class Board
   def valid_coordinate?(cell_coordinates) # Takes single coordiante as argument
     valid_coordinate = false # Default return value
     @cells.keys.each do |cell| # Loop through all keys in hash
-      if cell == cell_coordinates # Checks to see if inputted coordinate exists within our hash
+      # require "pry"; binding.pry
+      if cell == cell_coordinates && (@cells[cell_coordinates].fired_upon? == false) # Checks to see if inputted coordinate exists within our hash
         valid_coordinate = true # If it does, return true
       end
     end

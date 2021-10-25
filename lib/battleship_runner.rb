@@ -4,14 +4,16 @@ require './lib/cell'
 require './lib/game'
 
 # computer hits same cells more than once /user can hit same cell more than once
+  # user can't hit one again - computer still can 
 # can't quit from final page - can only quit before playing game
 # can't render a hit when showing own ships (with boolean)
 # after taking a shot = need to display message
   #Your shot on A4 was a miss.
   # My shot on C1 was a miss.
 # display missed shot
-# doesn't ask again if you enter coordinate wrong
+# doesn't ask again if you enter coordinate wrong (SOLVED)
 # report who won/lost
+# add comments to pull requests
 
 
 
@@ -44,10 +46,12 @@ def battleship_runner
         puts"==============PLAYER BOARD=============="
         current_game.player_board.render
         # require "pry"; binding.pry
-        puts"Enter the coordinate for your shot:"
-        shot = gets.chomp
 
-        current_game.take_turn(shot)
+        # TEMPORARILY COMMENTED
+        # puts"Enter the coordinate for your shot:"
+        # shot = gets.chomp
+
+        current_game.take_turn
 
         # if block - if ships have all sunk, set game_over to true
         # game is over if player ship 1 and 2 are sunk, or computer 1 and 2

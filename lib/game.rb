@@ -88,15 +88,27 @@ class Game
     end
   end
 
-  def take_turn(shot)
-    if @computer_board.valid_coordinate?(shot)
-      #fire upon
-      @computer_board.cells[shot].fire_upon
+  def take_turn
+    valid_player_shot = false
+    puts"Enter the coordinate for your shot:"
+    shot = gets.chomp
+
+    until valid_player_shot == true
+      if @computer_board.valid_coordinate?(shot)
+        valid_player_shot = true
+        @computer_board.cells[shot].fire_upon
+      else
+        puts "Please enter a valid coordinate."
+        shot = gets.chomp
+      end
     end
 
-    if @player_board.valid_coordinate?(@computer.random_fire)
-      #fire upon
-      @player_board.cells[@computer.random_fire].fire_upon
+    valid_computer_shot = false
+    until valid_computer_shot == true
+      if @player_board.valid_coordinate?(@computer.random_fire)
+        valid_computer_shot = true
+        @player_board.cells[@computer.random_fire].fire_upon
+      end
     end
   end
 
