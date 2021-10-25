@@ -3,8 +3,7 @@ require './lib/ship'
 require './lib/cell'
 require './lib/game'
 
-# computer hits same cells more than once /user can hit same cell more than once
-  # user can't hit one again - computer still can 
+# computer hits same cells more than once /user can hit same cell more than once (SOLVED)
 # can't quit from final page - can only quit before playing game
 # can't render a hit when showing own ships (with boolean)
 # after taking a shot = need to display message
@@ -14,6 +13,7 @@ require './lib/game'
 # doesn't ask again if you enter coordinate wrong (SOLVED)
 # report who won/lost
 # add comments to pull requests
+# error if you enter incorrect coordinate to place (SOLVED)
 
 
 

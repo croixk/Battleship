@@ -76,6 +76,15 @@ class Board
     # letters = AAA
     # numbers = 123
 
+
+    is_valid_coordinate = true
+
+    ship_cells.each do |cell|
+      if valid_coordinate?(cell) == false
+        return false
+      end
+    end
+
     equal_length = ship_name.length == ship_cells.length
     # boolean - ship_name = 3, ship_cells.length = 3, so true
 
@@ -104,13 +113,6 @@ class Board
       not_diagonal = true
     end
 
-    is_valid_coordinate = true
-
-    ship_cells.each do |cell|
-      if valid_coordinate?(cell) == false
-        is_valid_coordinate = false
-      end
-    end
 
     has_no_ship = true
     ship_cells.each do |cell| # Checks provided cell arrays to see if @current_ship attribute is nil

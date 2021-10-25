@@ -36,8 +36,7 @@ class Game
       if player_board.valid_placement?(@player_cruiser, cruiser_squares)
         player_board.place(@player_cruiser, cruiser_squares)
         valid_cruiser = true
-      elsif user_input == "q" # will this work
-        game_running = false
+
       else
         puts "Those are invalid coordinates. Please try again:"
         cruiser_squares = gets.chomp.split
@@ -105,9 +104,12 @@ class Game
 
     valid_computer_shot = false
     until valid_computer_shot == true
-      if @player_board.valid_coordinate?(@computer.random_fire)
+      random_coordinate = @computer.random_fire
+      if @player_board.valid_coordinate?(random_coordinate)
         valid_computer_shot = true
-        @player_board.cells[@computer.random_fire].fire_upon
+        @player_board.cells[random_coordinate].fire_upon
+      else
+        valid_computer_shot = false
       end
     end
   end
