@@ -149,6 +149,16 @@ RSpec.describe Board do
     expect(board.valid_placement?(submarine, ["A1", "B1"])).to eq false
   end
 
+  it 'has ships?' do
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
+    board.place(cruiser, ["A1", "A2", "A3"])
+    board.place(submarine, ["B1", "B2"])
+
+    expect(board.has_ships?).to be true
+  end
+
   # it 'can properly render if sunk' do
   #   board = Board.new
   #   cruiser = Ship.new("Cruiser", 3)
