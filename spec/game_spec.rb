@@ -38,12 +38,19 @@ RSpec.describe 'Game' do
 
   it 'can return appropriate is_game_over? value' do
     current_game = Game.new()
-    
+    current_game.player_cruiser.hit
+    current_game.player_cruiser.hit
+    current_game.player_cruiser.hit
+    current_game.player_sub.hit
+    current_game.player_sub.hit
+    expect(current_game.is_game_over?). to be true
   end
 
-# Test return value of is_game_over?
-# Test to see if computer board has 2 ship instances
+  it 'computer board has both ships' do
+    current_game = Game.new()
+    current_game.place_computer_ships
 
-
+    expect(current_game.computer_board.has_ships?).to be true
+  end
 
 end

@@ -159,29 +159,4 @@ RSpec.describe Board do
     expect(board.has_ships?).to be true
   end
 
-  # it 'can properly render if sunk' do
-  #   board = Board.new
-  #   cruiser = Ship.new("Cruiser", 3)
-  #   submarine = Ship.new("Submarine", 2)
-  #
-  #   board.place(cruiser, ["A1", "A2", "A3"])
-  #   board.place(submarine, ["C1", "D1"])
-  #   require 'pry'; binding.pry
-  # end
-
-  # it 'can render the current state of the board' do
-  #   board = Board.new
-  #   cruiser = Ship.new("Cruiser", 3)
-  #
-  #   board.place(cruiser, ["A1", "A2", "A3"])
-  #   require 'pry'; binding.pry
-  #   board.render
-  #
-  #   expected_string = "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
-  #
-  #   expect(board.render).to eq(expected_string)
-  # end
-
-
-
 end
