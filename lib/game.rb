@@ -30,7 +30,6 @@ class Game
     cruiser_squares = gets.chomp.split
 
     valid_cruiser = false
-
     while valid_cruiser == false
       # require "pry"; binding.pry
       if player_board.valid_placement?(@player_cruiser, cruiser_squares)
@@ -56,8 +55,7 @@ class Game
       if player_board.valid_placement?(@player_sub, submarine_squares)
         player_board.place(@player_sub, submarine_squares)
         valid_submarine = true
-      elsif user_input == "q" # will this work
-        game_running = false
+
       else
         puts "Those are invalid coordinates. Please try again:"
         submarine_squares = gets.chomp.split
@@ -112,6 +110,12 @@ class Game
         valid_computer_shot = false
       end
     end
+
+    puts"=============COMPUTER BOARD=========="
+    @computer_board.render
+
+    puts"==============PLAYER BOARD=============="
+    @player_board.render
 
 
     # player statement

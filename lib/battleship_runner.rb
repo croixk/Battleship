@@ -35,13 +35,19 @@ def battleship_runner
       current_game.place_computer_ships
       current_game.place_player_ships
 
+      puts"=============COMPUTER BOARD=========="
+      current_game.computer_board.render
+
+      puts"==============PLAYER BOARD=============="
+      current_game.player_board.render
+
       game_over = false
       while game_over != true
-        puts"=============COMPUTER BOARD=========="
-        current_game.computer_board.render
-
-        puts"==============PLAYER BOARD=============="
-        current_game.player_board.render
+        # puts"=============COMPUTER BOARD=========="
+        # current_game.computer_board.render
+        #
+        # puts"==============PLAYER BOARD=============="
+        # current_game.player_board.render
         # require "pry"; binding.pry
 
         # TEMPORARILY COMMENTED
