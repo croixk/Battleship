@@ -7,12 +7,12 @@ require './lib/game'
 # can't quit from final page - can only quit before playing game
 # can't render a hit when showing own ships (with boolean)
 # after taking a shot = need to display message
-  #Your shot on A4 was a miss.
-  # My shot on C1 was a miss.
+    #Your shot on A4 was a miss.
+    #My shot on C1 was a miss.
 # display missed shot
 # doesn't ask again if you enter coordinate wrong (SOLVED)
 # report who won/lost
-# add comments to pull requests
+# add comments to pull requests (eventually)
 # error if you enter incorrect coordinate to place (SOLVED)
 
 
