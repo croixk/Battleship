@@ -3,6 +3,18 @@ require './lib/ship'
 require './lib/cell'
 require './lib/game'
 
+# computer hits same cells more than once /user can hit same cell more than once
+# can't quit from final page - can only quit before playing game
+# can't render a hit when showing own ships (with boolean)
+# after taking a shot = need to display message
+  #Your shot on A4 was a miss.
+  # My shot on C1 was a miss.
+# display missed shot
+# doesn't ask again if you enter coordinate wrong
+# report who won/lost
+
+
+
 def battleship_runner
   puts "Welcome to BATTLESHIP"
   puts "Enter p to play. Enter q to quit."
@@ -30,26 +42,13 @@ def battleship_runner
         current_game.computer_board.render
 
         puts"==============PLAYER BOARD=============="
-        current_game.player_board.render(true)
+        current_game.player_board.render
         # require "pry"; binding.pry
         puts"Enter the coordinate for your shot:"
         shot = gets.chomp
 
-        # this should be computer board - can change once we have that
+        current_game.take_turn(shot)
 
-
-        if current_game.computer_board.valid_coordinate?(shot)
-          #fire upon
-          current_game.computer_board.cells[shot].fire_upon
-        end
-
-
-        if current_game.player_board.valid_coordinate?(current_game.computer.random_fire)
-          #fire upon
-          current_game.player_board.cells[current_game.computer.random_fire].fire_upon
-        end
-
-    
         # if block - if ships have all sunk, set game_over to true
         # game is over if player ship 1 and 2 are sunk, or computer 1 and 2
         if current_game.computer_cruiser.sunk? && current_game.computer_sub.sunk?
@@ -61,7 +60,8 @@ def battleship_runner
           current_game.player_board.render
 
           puts"game over"
-          return 0
+
+          battleship_runner
         end
 
         # 2nd block to end game , 2nd outcome

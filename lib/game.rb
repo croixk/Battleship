@@ -88,7 +88,16 @@ class Game
     end
   end
 
+  def take_turn(shot)
+    if @computer_board.valid_coordinate?(shot)
+      #fire upon
+      @computer_board.cells[shot].fire_upon
+    end
 
-
+    if @player_board.valid_coordinate?(@computer.random_fire)
+      #fire upon
+      @player_board.cells[@computer.random_fire].fire_upon
+    end
+  end
 
 end
