@@ -1,9 +1,4 @@
-require './lib/board'
-require './lib/ship'
-require './lib/cell'
 require './lib/game'
-
-# Refactor valid_placement?
 
 def battleship_runner
 
