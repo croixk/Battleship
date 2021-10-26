@@ -4,8 +4,6 @@ require './lib/cell'
 require './lib/game'
 
 # Refactor valid_placement?
-# Write is_game_over? test
-# Write valid_computer_placement test
 
 def battleship_runner
 

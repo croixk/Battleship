@@ -42,7 +42,8 @@ RSpec.describe 'Game' do
     expect(current_game.is_game_over?).to be false
   end
 
-# Test return value of is_game_over?
+
+
 # Test to see if computer board has 2 ship instances
 
 
