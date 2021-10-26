@@ -49,7 +49,9 @@ RSpec.describe 'Game' do
 
 
 # Test to see if computer board has 2 ship instances
-
+  it 'can detect computer ship instances' do
+    current_game = Game.new()
+    current_game.place_computer_ships
 
     expect(current_game.computer_board.has_ships?).to be true
   end
