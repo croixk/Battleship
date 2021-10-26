@@ -59,31 +59,9 @@ class Board
   end
 
 
+# How can we compartmentalize this?
 
-  def valid_placement?(ship_name, ship_cells)
-    # example ship - cruiser, length = 3
-    # example ship cells - ["A1", "A2", A3]
-
-    # empty arrays to hold letters, numbers
-    letters = []
-    numbers = []
-
-    ship_cells.each do |cell|
-      coordinates = cell.split(//)
-      letters << coordinates[0]
-      numbers << (coordinates[1].to_i)
-    end
-    # letters = AAA
-    # numbers = 123
-
-
-    is_valid_coordinate = true
-
-    ship_cells.each do |cell|
-      if valid_coordinate?(cell) == false
-        return false
-      end
-    end
+  def placement_checks(letters, numbers, ship_name, ship_cells)
 
     equal_length = ship_name.length == ship_cells.length
     # boolean - ship_name = 3, ship_cells.length = 3, so true
@@ -113,6 +91,42 @@ class Board
       not_diagonal = true
     end
 
+    if valid_letters && valid_numbers && not_diagonal && equal_length == true
+      return true
+    else
+      return false
+    end
+
+  end
+
+
+
+  def valid_placement?(ship_name, ship_cells)
+    # example ship - cruiser, length = 3
+    # example ship cells - ["A1", "A2", A3]
+
+    # empty arrays to hold letters, numbers
+    letters = []
+    numbers = []
+
+    ship_cells.each do |cell|
+      coordinates = cell.split(//)
+      letters << coordinates[0]
+      numbers << (coordinates[1].to_i)
+    end
+    # letters = AAA
+    # numbers = 123
+
+
+    is_valid_coordinate = true
+
+    ship_cells.each do |cell|
+      if valid_coordinate?(cell) == false
+        return false
+      end
+    end
+
+    placement_valid = placement_checks(letters, numbers, ship_name, ship_cells)
 
     has_no_ship = true
     ship_cells.each do |cell| # Checks provided cell arrays to see if @current_ship attribute is nil
@@ -125,7 +139,7 @@ class Board
     # require "pry"; binding.pry
 
     # if 6 booleans above are all true - return true
-    if equal_length && valid_letters && valid_numbers && not_diagonal && is_valid_coordinate && has_no_ship
+    if placement_valid && is_valid_coordinate && has_no_ship
       return true
     else
       return false
