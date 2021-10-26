@@ -16,9 +16,6 @@ def battleship_runner
     if user_input == "p"
       current_game = Game.new()
 
-      # computer makes board - figure out how to do this
-      # come back to this - where do we do random computer board?
-
       puts "I have laid out my ships on the grid."
       puts "You now need to lay out your two ships."
       puts "The Cruiser is three units long and the Submarine is two units long."

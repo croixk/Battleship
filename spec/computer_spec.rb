@@ -33,4 +33,6 @@ RSpec.describe Computer do
     expect(board.valid_coordinate?(computer.random_fire)).to eq true
   end
 
+
+
 end

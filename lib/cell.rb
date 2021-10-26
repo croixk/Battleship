@@ -67,20 +67,5 @@ class Cell
       @cell_state
     end
 
-    # Legacy:
-    # if optional_boolean != true # Will show cell_state
-    #   if @current_ship != nil and @current_ship.sunk?
-    #     @cell_state = 'X'
-    #   end
-    #   @cell_state
-    # else
-    #   if @current_ship != nil # Will display 'S' if a ship exists on cell & optional boolean is true
-    #     if @current_ship.sunk?
-    #       @cell_state = 'X'
-    #     else
-    #     @cell_state = 'S'
-    #   end
-    #   end
-    # end
   end
 end
